@@ -3,10 +3,9 @@ import csv
 from table_printer import print_table
 from arg_parser import FILE as input, DELIMITER, INDEXED
 
-table = []
-
 def main():
 	try:
+		table = []
 		with open(input, 'r', encoding='utf-8') as file:
 			reader = csv.reader(file, delimiter=DELIMITER)
 			for row in reader:
