@@ -70,6 +70,14 @@ def build_table(header, rows):
 		print(build_table_row(row))
 	print(build_table_row_last(header))
 
+def pad(source_string, dir, char ,count):
+	if dir == "left":
+		str = char * count
+		str += source_string
+		return str
+	else: 
+		return source_string + char * count
+
 try:
 	row_count = 0
 
