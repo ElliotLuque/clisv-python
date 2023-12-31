@@ -1,8 +1,8 @@
 import sys
 import csv
-
 from table_printer import print_table
 from arg_parser import FILE as input, DELIMITER, INDEXED
+
 table = []
 
 def main():
