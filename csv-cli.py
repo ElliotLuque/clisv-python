@@ -75,6 +75,11 @@ def pad(source_string, dir, char, pad):
 		str = char * pad
 		str += source_string
 		return str
+	elif dir == "both":
+		str = char * pad
+		str += source_string
+		str += char * pad
+		return str
 	else: 
 		return source_string + char * pad
 
