@@ -3,5 +3,6 @@
 *.spec
 
 # Folders
+__pycache__
 build
 dist
