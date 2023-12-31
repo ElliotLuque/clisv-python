@@ -54,12 +54,13 @@ def print_table(table):
 	cell_padding(table)
 
 	# Print table
+	header_row = {}
 	for i in range(len(table)):
-		header_row = {
-			"row": table[i],
-			"weights": [max_col_length(table, j) for j in range(len(table[i]))]
-		}
 		if i == 0:
+			header_row = {
+				"row": table[i],
+				"weights": [max_col_length(table, j) for j in range(len(table[i]))]
+			}
 			print(table_header(header_row))
 		else:
 			print(table_row(table[i]))
