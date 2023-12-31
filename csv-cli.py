@@ -20,15 +20,6 @@ t_chars = {
 	"cross_right": "┤",
 }
 
-def square_text(text):
-	text_length = len(text)
-	
-	str = f"{t_chars['top_left']}{t_chars['horizontal'] * (text_length + 2)}{t_chars['top_right']}\n"
-	str += f"{t_chars['vertical']} {text} {t_chars['vertical']}\n"
-	str += f"{t_chars['bottom_left']}{t_chars['horizontal'] * (text_length + 2)}{t_chars['bottom_right']}\n"
-	
-	return str
-
 def build_table_headers(headers):
 	str = f"{t_chars['top_left']}"
 
