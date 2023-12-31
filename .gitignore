@@ -1,4 +1,7 @@
 # Files
 *.csv
+*.spec
+
+# Folders
 build
 dist
