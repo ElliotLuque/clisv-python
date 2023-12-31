@@ -4,14 +4,14 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Prints csv file as table in console')
 parser.add_argument('file', metavar='file', type=str, help='csv file to print')
-parser.add_argument('--direction', metavar='direction', type=str, help='direction of padding')
+parser.add_argument('--align', metavar='alignment', type=str, help='alignment of table elements')
 parser.add_argument('--color', metavar='color', type=str, help='color of table elements')
 parser.add_argument('--delimiter', metavar='delimiter', type=str, help='delimiter of csv file')
-parser.add_argument('--bold', metavar='bold', type=bool, help='bold headers')
+parser.add_argument('--bold', metavar='bold', type=bool, help='bold table header')
 parser.add_argument('--indexed', action='store_true', help='add index column')
 args = parser.parse_args()
 
-ALIGNMENT = args.direction if args.direction else "right"
+ALIGNMENT = args.align if args.align else "left"
 COLOR = args.color if args.color else "reset"
 DELIMITER = args.delimiter if args.delimiter else ";"
 BOLD = args.bold if args.bold else False
@@ -39,7 +39,6 @@ table_styles = {
 	"bold": "\033[1m{cell}\033[0m",
 	"reset": "\033[0m{cell}\033[0m"
 }
-
 
 table = []
 
@@ -119,7 +118,7 @@ def stylize(str, collection,style):
 	return collection[style].format(cell=str)
 
 def pad(source_string, dir, char, pad):
-	if dir == "left":
+	if dir == "right":
 		str = char * pad
 		str += source_string
 		return str
