@@ -1,4 +1,4 @@
-from utils import stylize, max_col_length, cell_padding
+from utils import stylize, max_col_length, format_cells
 from arg_parser import IS_BOLD, COLOR
 from table_styles import SELECTED_TABLE_STYLE, ANSI_CODES
 
@@ -71,7 +71,7 @@ def print_table(table):
 		table (list): table containing csv contents to print
 	"""
 	# Initialize cells
-	cell_padding(table)
+	format_cells(table)
 
 	# Print table
 	for i in range(len(table)):

@@ -1,5 +1,5 @@
 import os
-from arg_parser import ALIGNMENT
+from arg_parser import ALIGNMENT, MAX_ELEMENT_LENGTH
 from table_styles import ANSI_CODES
 
 def pad(source_str, dir, char, len):
@@ -53,12 +53,20 @@ def max_col_length(table, col_number):
 			max = len(table[i][col_number]) 
 	return max	
 
-def cell_padding(table):
-	"""Pads all cells in (table) to equal length
+def format_cells(table):
+	"""Format all cells in (table) depending on ALIGNMENT and MAX_LENGTH
 	
 	Args:
-		table (list): table to pad
+		table (list): table to format
 	"""
 	for i in range(len(table)):
 		for j in range(len(table[i])):
-			table[i][j] = pad(table[i][j], ALIGNMENT, " ", max_col_length(table, j) - len(table[i][j]))
+			# Truncate cell if its too long
+			if len(table[i][j]) > MAX_ELEMENT_LENGTH and MAX_ELEMENT_LENGTH > 0:
+				table[i][j] = table[i][j][:MAX_ELEMENT_LENGTH] + "…"
+
+			# Pad cell if its too short
+			if MAX_ELEMENT_LENGTH <= 0:
+				table[i][j] = pad(table[i][j], ALIGNMENT, " ", max_col_length(table, j) - len(table[i][j]))
+			else:
+				table[i][j] = pad(table[i][j], ALIGNMENT, " ", MAX_ELEMENT_LENGTH + 1 - len(table[i][j]))
