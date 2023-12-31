@@ -50,7 +50,7 @@ def build_table_header(header):
 def build_table_row(row):
 	str = f"{t_chars['vertical']}"
 	for cell in row:
-		str += f"\033[1;32m {cell} \033[0m {t_chars['vertical']}"
+		str += f"\033[1;33m {cell} \033[0m{t_chars['vertical']}"
 	return str
 
 def build_table_row_last(header):
