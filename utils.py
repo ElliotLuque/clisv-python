@@ -1,18 +1,14 @@
 import os
 from arg_parser import ALIGNMENT
 
-def pad(source_string, dir, char, pad):
+def pad(source_str, dir, char, len):
+	str = char * len
+
 	if dir == "right":
-		str = char * pad
-		str += source_string
-		return str
-	elif dir == "center":
-		str = char * pad
-		str += source_string
-		str += char * pad
+		str += source_str
 		return str
 	else: 
-		return source_string + char * pad
+		return source_str + char * len
 	
 def stylize(str, collection, style):
 	if os.isatty(1):
