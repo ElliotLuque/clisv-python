@@ -1,3 +1,4 @@
+import os
 from arg_parser import ALIGNMENT
 
 def pad(source_string, dir, char, pad):
@@ -14,7 +15,10 @@ def pad(source_string, dir, char, pad):
 		return source_string + char * pad
 	
 def stylize(str, collection, style):
-	return collection[style].format(cell=str)
+	if os.isatty(1):
+		return collection[style].format(cell=str)
+	else:
+		return str
 
 def max_col_length(table, col_number):
 	max = 0
